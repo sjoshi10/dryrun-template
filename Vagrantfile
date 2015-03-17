@@ -8,10 +8,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   #config.vm.box = "ubuntu/trusty64"
 
-  #config.vm.box = "centos6.3"
-  #config.vm.box_url = "https://s3.amazonaws.com/itmat-public/centos-6.3-chef-10.14.2.box"
-  config.vm.box ="test"
-  config.vm.box_url ="http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20131103.box"
+  config.vm.box = "centos6.3"
+  config.vm.box_url = "https://s3.amazonaws.com/itmat-public/centos-6.3-chef-10.14.2.box"
+  #config.vm.box ="test"
+  #config.vm.box_url ="http://developer.nrel.gov/downloads/vagrant-boxes/CentOS-6.4-x86_64-v20131103.box"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -50,8 +50,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # end
 
 
- config.vm.provision :shell, :path => "install-rvm.sh",  :args => ""
- config.vm.provision :shell, :path => "install-ruby.sh", :args => "2.1.2 sinatra thin"
+ config.vm.provision :shell, :path => "kitchen/install-rvm.sh",  :args => ""
+ config.vm.provision :shell, :path => "kitchen/install-ruby.sh", :args => "2.1.2 sinatra thin"
 
 
   config.vm.provider :virtualbox do |vb|
@@ -62,10 +62,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision :chef_solo do |chef|
-   # chef.add_recipe "nginx"
-   # chef.add_recipe "mongodb"
+    chef.add_recipe "nginx"
+    chef.add_recipe "mongodb"
    #chef.add_recipe "test"
-    chef.cookbooks_path = "cookbooks"
+   # chef.cookbooks_path = "cookbooks"
     chef.log_level = 'debug'
     #chef.verbose_logging = true
   end
