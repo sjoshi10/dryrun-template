@@ -64,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :chef_solo do |chef|
     chef.add_recipe "nginx"
     chef.add_recipe "mongodb"
-   #chef.add_recipe "test"
+   chef.add_recipe "test"
    # chef.cookbooks_path = "cookbooks"
     chef.log_level = 'debug'
     #chef.verbose_logging = true
