@@ -25,11 +25,6 @@
 
 bash 'jenkins_folder_permissions' do
 		code <<-EOH
-		cd /home/vagrant
-		rvm use 2.1.2
-		gem install sinatra
-		gem install thin
-		gem install aws-sdk
 		EOH
 end
 
